@@ -59,6 +59,20 @@
   select {
     border-radius: 0;
   }
+
+  /* Custom basketball cursor: hide native cursor only while the ball is active.
+     Text-editable elements keep their native cursors (UA styles win for them). */
+  html.ball-cursor,
+  html.ball-cursor a,
+  html.ball-cursor button,
+  html.ball-cursor label {
+    cursor: none;
+  }
+  html.ball-cursor input,
+  html.ball-cursor textarea,
+  html.ball-cursor select {
+    cursor: auto;
+  }
 }
 
 @layer utilities {
@@ -86,9 +100,23 @@
     animation: marquee 60s linear infinite;
   }
 
-  .clip-text-bone {
-    -webkit-text-stroke: 1px rgba(239, 233, 219, 0.28);
+  .outline-type {
+    -webkit-text-stroke: 1.5px rgba(239, 233, 219, 0.55);
     color: transparent;
+  }
+  .outline-type-rust {
+    -webkit-text-stroke: 1.5px rgba(198, 86, 26, 0.8);
+    color: transparent;
+  }
+  .outline-type-dark {
+    -webkit-text-stroke: 1.5px rgba(28, 28, 28, 0.5);
+    color: transparent;
+  }
+
+  .court-line {
+    background-image: linear-gradient(to right, currentColor 0 100%);
+    background-size: 12px 1px;
+    background-repeat: repeat-x;
   }
 }
 

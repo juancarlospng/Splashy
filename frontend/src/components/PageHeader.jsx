@@ -1,16 +1,18 @@
 import { Eyebrow } from "./ui-bits";
+import { XMarker } from "./Graphics";
 import { Lines, Reveal } from "./motion";
 
-// Shared dark editorial page header.
-export default function PageHeader({ eyebrow, title, body, testId }) {
+// Shared dark editorial page header with numbered X marker.
+export default function PageHeader({ eyebrow, title, body, index = "00", testId }) {
   const titleLines = Array.isArray(title) ? title : [title];
   return (
-    <header className="grain relative overflow-hidden bg-carbon pb-16 pt-36 sm:pb-20 sm:pt-44 lg:pb-24">
+    <header className="grain relative overflow-hidden bg-carbon pb-16 pt-32 sm:pb-20 sm:pt-40 lg:pb-24">
       <div className="mx-auto max-w-shell px-5 sm:px-8 lg:px-12">
-        <Eyebrow className="mb-8">{eyebrow}</Eyebrow>
+        <XMarker index={index} className="mb-8" />
+        <Eyebrow className="mb-6">{eyebrow}</Eyebrow>
         <h1
           data-testid={testId}
-          className="max-w-4xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-bone sm:text-6xl lg:text-7xl"
+          className="max-w-5xl font-display text-4xl font-medium leading-[1.02] tracking-tight text-bone sm:text-6xl lg:text-7xl"
         >
           <Lines lines={titleLines} />
         </h1>

@@ -4,99 +4,129 @@ import PageHeader from "@/components/PageHeader";
 import { Reveal } from "@/components/motion";
 import { Eyebrow, Btn } from "@/components/ui-bits";
 import { Emblem, XMark } from "@/components/brand";
+import { XMarker, Trajectory, CourtArc, FrameTag } from "@/components/Graphics";
 
 const SHELL = "mx-auto max-w-shell px-5 sm:px-8 lg:px-12";
 
 export default function About() {
   const { t, lang } = useLang();
   const a = t.about;
+  const principles =
+    lang === "en"
+      ? ["Performance", "Discipline", "Style", "Development"]
+      : ["Rendimiento", "Disciplina", "Estilo", "Desarrollo"];
   return (
     <>
       <PageHeader
         testId="about-page-title"
+        index="06"
         eyebrow={a.eyebrow}
         title={[a.title]}
         body={a.mission.body}
       />
 
-      {/* Mission + emblem */}
+      {/* Mission + principles + emblem moment */}
       <section className="bg-bone py-16 text-carbon sm:py-20 lg:py-24" data-testid="about-mission">
-        <div className={`${SHELL} grid items-center gap-14 lg:grid-cols-12 lg:gap-20`}>
+        <div className={`${SHELL} grid gap-14 lg:grid-cols-12 lg:gap-20`}>
           <Reveal className="lg:col-span-7">
-            <Eyebrow className="!text-rust">{a.mission.eyebrow}</Eyebrow>
-            <h2 className="mt-6 font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl">
+            <XMarker index="01" dark={false} label={a.mission.eyebrow} />
+            <h2 className="mt-8 font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl">
               {a.mission.heading}
             </h2>
-            <div className="mt-10 grid grid-cols-2 border-t border-carbon/20 sm:grid-cols-4">
-              {["Performance", "Discipline", "Style", "Development"].map((p, i) => (
-                <div key={p} className="border-b border-carbon/20 py-6 sm:border-r sm:px-4 sm:last:border-r-0">
-                  <span className="font-mono text-xs tracking-label text-rust">0{i + 1}</span>
-                  <p className="mt-3 font-display text-xl font-medium" data-testid={`about-principle-${i}`}>
-                    {lang === "en" ? p : ["Rendimiento", "Disciplina", "Estilo", "Desarrollo"][i]}
-                  </p>
-                </div>
+            <div className="mt-10 border-t border-carbon/20">
+              {principles.map((p, i) => (
+                <Reveal key={p} delay={i * 0.06}>
+                  <div
+                    className="group flex items-baseline gap-6 border-b border-carbon/20 py-5 sm:gap-10"
+                    data-testid={`about-principle-${i}`}
+                  >
+                    <span className="font-mono text-xs tracking-label text-rust">0{i + 1}</span>
+                    <span className="font-display text-2xl font-medium tracking-tight transition-transform duration-300 group-hover:translate-x-2 sm:text-3xl">
+                      {p}
+                    </span>
+                    <Trajectory className="ml-auto hidden w-32 opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:block" />
+                  </div>
+                </Reveal>
               ))}
             </div>
           </Reveal>
           <Reveal delay={0.15} className="lg:col-span-5">
-            <div className="flex justify-center border border-carbon/20 p-10 lg:p-14" data-testid="about-emblem">
+            <div className="relative flex justify-center border border-carbon/20 p-10 lg:p-14" data-testid="about-emblem">
+              <span className="absolute -left-3 -top-3 h-10 w-10 border-l-2 border-t-2 border-rust" aria-hidden="true" />
+              <span className="absolute -bottom-3 -right-3 h-10 w-10 border-b-2 border-r-2 border-rust" aria-hidden="true" />
               <Emblem className="h-56 w-auto" glyph="#C6561A" xColor="#1C1C1C" />
             </div>
-            <p className="mt-6 text-center font-mono text-[10px] uppercase leading-relaxed tracking-[0.12em] text-stonegray">
-              {lang === "en"
-                ? "The symbolic X — spirit, strength, movement, mind."
-                : "La X simbólica — espíritu, fuerza, movimiento, mente."}
-            </p>
+            <FrameTag dark={false} className="mt-6">
+              {lang === "en" ? "Eye — Arm — Wave — Brain" : "Ojo — Brazo — Ola — Cerebro"}
+            </FrameTag>
+            <p className="mt-4 text-sm leading-relaxed text-carbon/70">{a.emblem.body}</p>
           </Reveal>
         </div>
       </section>
 
       {/* School / Academy relationship */}
-      <section className="grain bg-carbon py-20 sm:py-24 lg:py-32" data-testid="about-ecosystem">
-        <div className={`${SHELL} grid gap-14 lg:grid-cols-2 lg:gap-0 lg:divide-x lg:divide-bone/15`}>
-          <Reveal className="lg:pr-16">
-            <Eyebrow>{a.ecosystem.eyebrow}</Eyebrow>
-            <h2 className="mt-6 font-display text-3xl font-medium leading-tight tracking-tight text-bone sm:text-4xl">
+      <section className="grain relative overflow-hidden bg-carbon py-20 sm:py-24 lg:py-32" data-testid="about-ecosystem">
+        <CourtArc className="pointer-events-none absolute -bottom-40 left-[-10%] w-[640px]" />
+        <div className={`${SHELL} grid gap-14 lg:grid-cols-12 lg:gap-16`}>
+          <Reveal className="lg:col-span-7">
+            <XMarker index="02" label={a.ecosystem.eyebrow} />
+            <h2 className="mt-8 max-w-xl font-display text-3xl font-medium leading-tight tracking-tight text-bone sm:text-5xl">
               {a.ecosystem.heading}
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-bone/70">{a.ecosystem.body}</p>
+            <p className="mt-4 max-w-lg font-display text-xl italic text-bone/85 sm:text-2xl">
+              {a.ecosystem.body2}
+            </p>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <Btn to="/school" testId="about-school-link">{t.common.exploreSchool}</Btn>
+              <Btn to="/programs" variant="solid" testId="about-programs-link">{t.common.explorePrograms}</Btn>
+            </div>
           </Reveal>
-          <Reveal delay={0.12} className="lg:pl-16">
-            <div className="flex h-full flex-col justify-end lg:pt-24">
-              <p className="max-w-lg text-base leading-relaxed text-bone/70">{a.ecosystem.body2}</p>
-              <div className="mt-8 flex gap-4">
-                <Btn to="/school" testId="about-school-link">{t.common.exploreSchool}</Btn>
-                <Btn to="/programs" variant="solid" testId="about-programs-link">{t.common.explorePrograms}</Btn>
-              </div>
+          <Reveal delay={0.12} className="flex items-center lg:col-span-5">
+            <div className="w-full overflow-hidden border border-bone/15">
+              <img
+                src={IMG.courtDusk.src}
+                width={IMG.courtDusk.w}
+                height={IMG.courtDusk.h}
+                alt={IMG.courtDusk.alt}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover"
+              />
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Creator */}
+      {/* Creator — portrait-led */}
       <section className="bg-bone py-16 text-carbon sm:py-20 lg:py-24" data-testid="about-creator">
-        <div className={`${SHELL} grid items-center gap-14 lg:grid-cols-12 lg:gap-20`}>
-          <Reveal className="lg:col-span-5">
-            <div className="overflow-hidden border border-carbon/25">
+        <div className={`${SHELL} grid gap-14 lg:grid-cols-12 lg:gap-20`}>
+          <Reveal className="lg:col-span-6">
+            <div className="relative">
               <img
                 src={IMG.creatorPortrait.src}
                 width={IMG.creatorPortrait.w}
                 height={IMG.creatorPortrait.h}
                 alt={IMG.creatorPortrait.alt}
                 loading="lazy"
-                className="aspect-[3/4] w-full object-cover"
+                className="aspect-[3/4] w-full border border-carbon/25 object-cover"
               />
+              <span className="absolute -left-3 -top-3 h-10 w-10 border-l-2 border-t-2 border-rust" aria-hidden="true" />
+              <span className="absolute -bottom-3 -right-3 h-10 w-10 border-b-2 border-r-2 border-rust" aria-hidden="true" />
             </div>
+            <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.12em] text-stonegray">
+              {t.footer.imageryNote}
+            </p>
           </Reveal>
-          <div className="lg:col-span-7">
+          <div className="flex flex-col justify-center lg:col-span-6">
             <Reveal>
-              <Eyebrow className="!text-rust">{a.creator.eyebrow}</Eyebrow>
-              <h2 className="mt-6 font-display text-4xl font-medium tracking-tight sm:text-5xl">
-                {a.creator.heading}
+              <XMarker index="03" dark={false} label={a.creator.eyebrow} />
+              <h2 className="mt-8 font-display text-4xl font-medium leading-[1.02] tracking-tight sm:text-6xl">
+                Marquie <span className="italic text-rust">“Splashy”</span> Smith
               </h2>
+              <p className="mt-4 font-mono text-[11px] uppercase tracking-label text-stonegray">{a.creator.role ?? t.home.creator.role}</p>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-carbon/75 sm:text-lg">
+              <p className="mt-8 max-w-xl text-base leading-relaxed text-carbon/75 sm:text-lg">
                 {a.creator.body}
               </p>
               <p className="mt-6 max-w-xl font-mono text-[10px] uppercase leading-relaxed tracking-[0.12em] text-stonegray">
@@ -112,8 +142,8 @@ export default function About() {
       <section className="grain bg-carbon py-20 sm:py-24 lg:py-32" data-testid="about-results">
         <div className={SHELL}>
           <Reveal>
-            <Eyebrow>{a.results.eyebrow}</Eyebrow>
-            <h2 className="mt-6 max-w-2xl font-display text-3xl font-medium leading-tight tracking-tight text-bone sm:text-5xl">
+            <XMarker index="04" label={a.results.eyebrow} />
+            <h2 className="mt-8 max-w-2xl font-display text-3xl font-medium leading-tight tracking-tight text-bone sm:text-5xl">
               {a.results.heading}
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-bone/70">{a.results.body}</p>

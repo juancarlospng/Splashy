@@ -3,7 +3,7 @@ import { useLang } from "@/i18n/LanguageContext";
 import { getProgram, flightLevels } from "@/data/programs";
 import { Reveal } from "@/components/motion";
 import { Eyebrow, Btn, StatusTag } from "@/components/ui-bits";
-import { statusLabel } from "./Programs";
+import { statusLabel } from "@/data/statusLabel";
 
 const SHELL = "mx-auto max-w-shell px-5 sm:px-8 lg:px-12";
 

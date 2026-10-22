@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-route
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import BallCursor from "@/components/BallCursor";
 import Home from "@/pages/Home";
 import School from "@/pages/School";
 import Programs from "@/pages/Programs";
@@ -57,6 +58,7 @@ function ScrollManager() {
 function App() {
   return (
     <LanguageProvider>
+      <BallCursor />
       <BrowserRouter>
         <ScrollManager />
         <ErrorBoundary>

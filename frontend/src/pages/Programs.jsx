@@ -1,20 +1,24 @@
-import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import { corePrograms, devPrograms, flightLevels, STATUS } from "@/data/programs";
+import { corePrograms, devPrograms, flightLevels } from "@/data/programs";
+import { statusLabel } from "@/data/statusLabel";
 import { IMG } from "@/data/images";
 import PageHeader from "@/components/PageHeader";
 import { Reveal } from "@/components/motion";
-import { Eyebrow, Btn, StatusTag, ArrowLink } from "@/components/ui-bits";
+import { Eyebrow, Btn, StatusTag } from "@/components/ui-bits";
+import { XMarker, RiseMark, CourtArc } from "@/components/Graphics";
+import ProgramIndex from "@/components/ProgramIndex";
 
 const SHELL = "mx-auto max-w-shell px-5 sm:px-8 lg:px-12";
 
-const statusLabel = (t, s) =>
+const programImage = (id) =>
   ({
-    [STATUS.AVAILABLE]: t.status.available,
-    [STATUS.IN_DEV]: t.status.inDevelopment,
-    [STATUS.PLANNED]: t.status.planned,
-    [STATUS.UNDER_REVIEW]: t.status.underReview,
-  }[s] || t.status.planned);
+    foundation: IMG.campAction,
+    "flight-levels": IMG.hoopMoody,
+    "personalized-flight": IMG.playerSpot,
+    "flight-test": IMG.hoopNight,
+    consultation: IMG.courtWalk,
+    "flight-camps": IMG.ringOrange,
+  }[id] || IMG.courtDusk);
 
 export default function Programs() {
   const { t, lang } = useLang();
@@ -22,85 +26,46 @@ export default function Programs() {
     <>
       <PageHeader
         testId="programs-page-title"
+        index="02"
         eyebrow={t.programs.eyebrow}
         title={[t.programs.title]}
         body={t.programs.body}
       />
 
-      {/* Main pathways */}
+      {/* Editorial program index — hover/tap to preview */}
       <section className="bg-bone py-16 text-carbon sm:py-20 lg:py-24" data-testid="programs-core">
         <div className={SHELL}>
           <Reveal>
-            <Eyebrow className="!text-rust">{t.programs.coreHeading}</Eyebrow>
+            <XMarker index="01" dark={false} label={t.programs.coreHeading} />
           </Reveal>
-          <div className="mt-10 border-t border-carbon/20">
-            {corePrograms.map((p, i) => (
-              <Reveal key={p.id} delay={i * 0.06}>
-                <Link
-                  to={`/programs/${p.id}`}
-                  data-testid={`programs-row-${p.id}`}
-                  className="group grid gap-3 border-b border-carbon/20 py-8 transition-colors duration-200 hover:bg-carbon/[0.03] md:grid-cols-12 md:items-baseline"
-                >
-                  <span className="font-mono text-xs tracking-label text-rust md:col-span-1">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="font-display text-3xl font-medium tracking-tight transition-colors duration-200 group-hover:text-rust sm:text-4xl md:col-span-4">
-                    {p.name[lang]}
-                  </h3>
-                  <p className="max-w-md text-sm leading-relaxed text-carbon/70 md:col-span-5">
-                    {p.tagline[lang]}
-                  </p>
-                  <div className="flex items-center gap-4 md:col-span-2 md:justify-end">
-                    <StatusTag statusKey={p.status} label={statusLabel(t, p.status)} dark={false} />
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.08} className="mt-10">
+            <ProgramIndex
+              items={corePrograms}
+              imageById={Object.fromEntries(corePrograms.map((p) => [p.id, programImage(p.id)]))}
+              testPrefix="programs-row"
+            />
+          </Reveal>
         </div>
       </section>
 
-      {/* Flight Levels */}
-      <section className="grain bg-carbon py-20 sm:py-24 lg:py-32" data-testid="programs-levels">
+      {/* Flight Levels — stepped progression with accessible disclosure */}
+      <section className="grain relative overflow-hidden bg-carbon py-20 sm:py-24 lg:py-32" data-testid="programs-levels">
+        <CourtArc className="pointer-events-none absolute -bottom-40 left-[-8%] w-[560px]" />
         <div className={`${SHELL} grid gap-14 lg:grid-cols-12 lg:gap-20`}>
           <div className="lg:col-span-5">
             <Reveal>
-              <Eyebrow>{t.programs.levels.eyebrow}</Eyebrow>
-              <h2 className="mt-6 font-display text-3xl font-medium leading-tight tracking-tight text-bone sm:text-5xl">
+              <XMarker index="02" label={t.programs.levels.eyebrow} />
+              <h2 className="mt-8 font-display text-3xl font-medium leading-tight tracking-tight text-bone sm:text-5xl">
                 {t.programs.levels.heading}
               </h2>
               <p className="mt-6 max-w-md text-base leading-relaxed text-bone/70">{t.programs.levels.body}</p>
-              <div className="mt-8 overflow-hidden border border-bone/15">
-                <img
-                  src={IMG.hoopMoody.src}
-                  width={IMG.hoopMoody.w}
-                  height={IMG.hoopMoody.h}
-                  alt={IMG.hoopMoody.alt}
-                  loading="lazy"
-                  className="aspect-[16/10] w-full object-cover"
-                />
+              <div className="mt-10 hidden lg:block">
+                <RiseMark className="h-28 w-6 text-bone/40" />
               </div>
             </Reveal>
           </div>
           <div className="lg:col-span-7">
-            {flightLevels.map((l, i) => (
-              <Reveal key={l.n} delay={i * 0.07}>
-                <div
-                  className={`flex flex-col gap-2 border-t border-bone/15 py-7 sm:flex-row sm:items-baseline sm:gap-10 ${
-                    i === flightLevels.length - 1 ? "border-b" : ""
-                  }`}
-                  data-testid={`flight-level-${l.n}`}
-                >
-                  <span className="font-mono text-xs tracking-label text-rust sm:w-16">
-                    LVL {l.n}
-                  </span>
-                  <h3 className="font-display text-2xl font-medium text-bone sm:text-3xl sm:w-56">
-                    {l.name[lang]}
-                  </h3>
-                  <p className="max-w-sm text-sm leading-relaxed text-bone/60">{l.desc[lang]}</p>
-                </div>
-              </Reveal>
-            ))}
+            <LevelSteps />
           </div>
         </div>
       </section>
@@ -109,8 +74,8 @@ export default function Programs() {
       <section className="bg-bone py-16 text-carbon sm:py-20 lg:py-24" data-testid="programs-dev">
         <div className={SHELL}>
           <Reveal>
-            <Eyebrow className="!text-rust">{t.programs.dev.eyebrow}</Eyebrow>
-            <h2 className="mt-6 max-w-2xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl">
+            <XMarker index="03" dark={false} label={t.programs.dev.eyebrow} />
+            <h2 className="mt-8 max-w-2xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl">
               {t.programs.dev.heading}
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-carbon/70">{t.programs.dev.body}</p>
@@ -118,17 +83,20 @@ export default function Programs() {
           <div className="mt-12 grid gap-px border border-carbon/20 bg-carbon/20 md:grid-cols-2 lg:grid-cols-3">
             {devPrograms.map((p, i) => (
               <Reveal key={p.id} delay={i * 0.05} className="h-full">
-                <Link
-                  to={`/programs/${p.id}`}
+                <a
+                  href={`/programs/${p.id}`}
                   data-testid={`programs-dev-card-${p.id}`}
                   className="group flex h-full flex-col bg-bone p-8 transition-colors duration-200 hover:bg-carbon hover:text-bone"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <h3 className="font-display text-2xl font-medium tracking-tight transition-colors duration-200 group-hover:text-rust">
-                      {p.name[lang]}
-                    </h3>
+                    <span className="font-mono text-[10px] tracking-label text-stonegray">
+                      F.{String(i + 1).padStart(2, "0")}
+                    </span>
                     <StatusTag statusKey={p.status} label={statusLabel(t, p.status)} dark={false} />
                   </div>
+                  <h3 className="mt-8 font-display text-2xl font-medium tracking-tight transition-colors duration-200 group-hover:text-rust">
+                    {p.name[lang]}
+                  </h3>
                   <p className="mt-4 flex-1 text-sm leading-relaxed text-carbon/65 transition-colors duration-200 group-hover:text-bone/65">
                     {p.tagline[lang]}
                   </p>
@@ -136,7 +104,7 @@ export default function Programs() {
                     {t.common.learnMore}
                     <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                   </span>
-                </Link>
+                </a>
               </Reveal>
             ))}
           </div>
@@ -167,4 +135,36 @@ export default function Programs() {
   );
 }
 
-export { statusLabel };
+// Stepped level disclosure — staircase on desktop, accordion on all sizes.
+function LevelSteps() {
+  const { t, lang } = useLang();
+  return (
+    <div className="flex flex-col">
+      {flightLevels.map((l, i) => (
+        <Reveal key={l.n} delay={i * 0.06}>
+          <details
+            className={`group border-t border-bone/15 ${i === flightLevels.length - 1 ? "border-b" : ""}`}
+            data-testid={`flight-level-${l.n}`}
+            style={{ marginLeft: `min(${i * 6}%, 12rem)` }}
+          >
+            <summary className="flex cursor-pointer list-none items-baseline gap-6 py-6 transition-colors duration-200 hover:text-rust [&::-webkit-details-marker]:hidden lg:gap-10">
+              <span className="font-mono text-xs tracking-label text-rust">LVL {l.n}</span>
+              <h3 className="font-display text-2xl font-medium text-bone transition-colors duration-200 group-hover:text-rust sm:text-3xl">
+                {l.name[lang]}
+              </h3>
+              <span
+                aria-hidden="true"
+                className="ml-auto font-mono text-rust transition-transform duration-300 group-open:rotate-45"
+              >
+                →
+              </span>
+            </summary>
+            <p className="max-w-md pb-7 text-sm leading-relaxed text-bone/60 lg:pl-[4.5rem]">
+              {l.desc[lang]}
+            </p>
+          </details>
+        </Reveal>
+      ))}
+    </div>
+  );
+}

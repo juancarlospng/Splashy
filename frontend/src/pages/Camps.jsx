@@ -19,6 +19,7 @@ export default function Camps() {
     <>
       <PageHeader
         testId="camps-page-title"
+        index="05"
         eyebrow={t.camps.eyebrow}
         title={[t.camps.title]}
         body={t.camps.body}

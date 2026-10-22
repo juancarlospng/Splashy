@@ -67,18 +67,22 @@ export default function Nav() {
         }`}
       >
         <div
-          className={`mx-auto flex max-w-shell items-center justify-between px-5 sm:px-8 lg:px-12 transition-colors duration-300 ${
-            scrolled ? "border-b border-bone/10" : "border-b border-transparent"
+          className={`mx-auto flex max-w-shell items-center justify-between px-5 transition-all duration-300 sm:px-8 lg:px-12 ${
+            scrolled ? "border-b border-bone/10 py-2" : "border-b border-transparent py-0"
           }`}
         >
           <Link
             to="/"
             data-testid="nav-logo-home"
-            className="flex items-center gap-3 py-5"
+            className="flex items-center gap-3 py-4"
             aria-label="Flight Academy — home"
           >
-            <XMark className="h-4 w-4 text-rust" />
-            <span className="font-display text-sm font-semibold uppercase tracking-[0.14em] text-bone">
+            <XMark className={`text-rust transition-all duration-300 ${scrolled ? "h-3.5 w-3.5" : "h-4 w-4"}`} />
+            <span
+              className={`font-display font-semibold uppercase tracking-[0.14em] text-bone transition-all duration-300 ${
+                scrolled ? "text-[13px]" : "text-sm"
+              }`}
+            >
               Flight <span className="hidden sm:inline">Academy</span>
             </span>
           </Link>

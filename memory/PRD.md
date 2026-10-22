@@ -34,3 +34,4 @@ No prices, no testimonials/results, no credentials/stats, no video players, no c
 - All 8+ routes render without crashes (desktop 1440 + mobile 390).
 - Filters: 21→6 topics on Dunk Library filter; ES switch preserves route; form validation (6 errors on empty submit), guardian block for minors, demo success message.
 - No horizontal overflow on home/school/programs at either viewport.
+- Redesign v2 verified: layered hero (desktop + mobile compositions), programs index with shared image panel + hover states, school archive, about page, basketball cursor (render, native-cursor suppression, click bounce), ES switching on /about, production build passes.

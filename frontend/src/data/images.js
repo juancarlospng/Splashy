@@ -65,4 +65,10 @@ export const IMG = {
     h: 650,
     alt: "Basketball hoop lit at night with a moody atmosphere",
   },
+  heroCutout: {
+    src: "https://static.prod-images.emergentagent.com/jobs/0e4dbfb2-0701-479e-b2ac-bd55cb8b38bc/images/f30e8c7c1307193ea565d6f0594123094d320ccea3ab9f907794ef222b3eefee.jpeg",
+    w: 848,
+    h: 1264,
+    alt: "Athlete rising into a dunk, isolated on black",
+  },
 };

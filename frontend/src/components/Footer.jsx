@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { LangSwitch } from "./Nav";
 import { XMark, Emblem } from "./brand";
+import { useCursorEnabled } from "./BallCursor";
 
 export default function Footer() {
   const { t, lang } = useLang();
+  const [cursorOn, setCursorOn] = useCursorEnabled();
   const year = new Date().getFullYear();
   return (
     <footer className="border-t border-bone/10 bg-carbon" data-testid="site-footer">
@@ -66,6 +68,24 @@ export default function Footer() {
           <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-bone/35">
             © {year} Flight Academy — {t.footer.rights}
           </p>
+          <label
+            className="flex cursor-pointer items-center gap-3 font-mono text-[10px] uppercase tracking-[0.14em] text-bone/50 transition-colors duration-200 hover:text-bone"
+            data-testid="footer-cursor-toggle-label"
+          >
+            <input
+              type="checkbox"
+              data-testid="footer-cursor-toggle"
+              checked={cursorOn}
+              onChange={(e) => {
+                const v = e.target.checked;
+                setCursorOn(v);
+                localStorage.setItem("flight-cursor", v ? "on" : "off");
+                window.dispatchEvent(new CustomEvent("flight:cursor-toggle", { detail: v ? "on" : "off" }));
+              }}
+              className="h-3.5 w-3.5 accent-[#C6561A]"
+            />
+            {t.footer.cursorToggle}
+          </label>
           <p className="max-w-xl font-mono text-[10px] leading-relaxed tracking-[0.08em] text-bone/35">
             {t.footer.demoNote} {t.footer.imageryNote}
           </p>

@@ -327,9 +327,16 @@ export const en = {
     explore: "Explore",
     company: "Company",
     langLabel: "Language",
+    cursorToggle: "Custom cursor",
     demoNote: "Prototype website. Forms and access views are demonstrations — no data is collected, sent or stored.",
     imageryNote: "Imagery uses temporary placeholder assets pending official photography.",
     rights: "All rights reserved.",
     backToTop: "Back to top",
+  },
+  graphics: {
+    takeoff: "Takeoff",
+    apex: "Apex",
+    landing: "Landing",
+    previewHint: "Hover an entry to preview",
   },
 };

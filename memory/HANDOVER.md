@@ -1,5 +1,17 @@
 # FLIGHT — Prototype Handover
 
+## Redesign v2 — art direction (2026-10-22)
+- Direction: "an independent luxury sports publication meets a high-performance training brand."
+- Signature hero: monumental solid FLIGHT + outlined ACADEMY typography layered with a generated athlete cutout (black backdrop dissolving via mix-blend-screen), movement-trajectory annotation, court arc, editorial lower-edge details strip; separate considered mobile composition.
+- FLIGHT graphic language: dotted jump-trajectory SVGs with takeoff X + landing tick, vertical RiseMark, numbered X section markers on every major section, F.01-style frame tags, center-court arc decorations.
+- Programs: editorial index (hover/focus updates a shared sticky image panel on desktop; tap-to-expand rows on mobile with all details visible); Flight Levels as a stepped staircase disclosure (accessible details elements, no cartoon art); programs in development with F.nn frame numbers.
+- School: archive layout — featured episodes as varied image cards, remaining topics as a dense numbered index; filters intact.
+- Method: single spacious composition along a vertical trajectory line (F.01–F.04), no icon cards.
+- About: portrait-led creator block with rust frame corners, principles index, emblem storytelling moment.
+- Closing CTA: monumental type with rust rule drawing in.
+- Basketball cursor: 24px rust ball with dark seams, precise tracking, ~420ms click bounce (WAAPI, restarts cleanly), hover scale on interactive elements, native text cursors on inputs, disabled on touch + reduced-motion, footer "Custom cursor" toggle (persisted), native cursor always the fallback.
+- Motion budget: 200–500ms transitions, one dominant animated element per viewport, reduced-motion honored.
+
 ## Implemented
 - Pages: Home, Flight School (filterable 21-topic library), Programs (+12 detail views), Flight Test (demo form + guardian step), Coaching, Camps (demo interest form), About, Contact (demo form), Private Access (secondary demo gate).
 - Interactions: working desktop + mobile navigation, EN/ES switch (route preserved, preference remembered), category filters, program detail views, accessible demo forms with validation ("Demo completed. No request has been sent." — nothing is sent or stored), framer-motion reveals + masked hero line reveal, one slow editorial marquee, subtle hero parallax, lenis momentum scrolling, reduced-motion support, visible rust focus rings, data-testids on all interactive elements.

@@ -327,9 +327,16 @@ export const es = {
     explore: "Explorar",
     company: "Compañía",
     langLabel: "Idioma",
+    cursorToggle: "Cursor personalizado",
     demoNote: "Sitio prototipo. Los formularios y vistas de acceso son demonstraciones — no se recogen, envían ni almacenan datos.",
     imageryNote: "Las imágenes usan recursos provisionales a la espera de la fotografía oficial.",
     rights: "Todos los derechos reservados.",
     backToTop: "Volver arriba",
+  },
+  graphics: {
+    takeoff: "Despegue",
+    apex: "Apogeo",
+    landing: "Aterrizaje",
+    previewHint: "Pasa el cursor para ver",
   },
 };

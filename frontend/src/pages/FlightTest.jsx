@@ -34,6 +34,7 @@ export default function FlightTest() {
     <>
       <PageHeader
         testId="flight-test-page-title"
+        index="04"
         eyebrow={t.flightTest.eyebrow}
         title={[t.flightTest.title]}
         body={t.flightTest.intro}

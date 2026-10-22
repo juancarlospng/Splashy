@@ -19,6 +19,7 @@ export default function Contact() {
     <>
       <PageHeader
         testId="contact-page-title"
+        index="07"
         eyebrow={t.contact.eyebrow}
         title={[t.contact.title]}
         body={t.contact.body}

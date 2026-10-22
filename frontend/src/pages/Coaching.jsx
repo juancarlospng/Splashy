@@ -4,7 +4,7 @@ import { IMG } from "@/data/images";
 import PageHeader from "@/components/PageHeader";
 import { Reveal } from "@/components/motion";
 import { Btn, StatusTag } from "@/components/ui-bits";
-import { statusLabel } from "./Programs";
+import { statusLabel } from "@/data/statusLabel";
 
 const SHELL = "mx-auto max-w-shell px-5 sm:px-8 lg:px-12";
 
@@ -77,6 +77,7 @@ export default function Coaching() {
     <>
       <PageHeader
         testId="coaching-page-title"
+        index="03"
         eyebrow={t.coaching.eyebrow}
         title={[t.coaching.title]}
         body={t.coaching.body}
