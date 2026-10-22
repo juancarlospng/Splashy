@@ -43,7 +43,7 @@ function Hero() {
         </span>
       </motion.div>
 
-      {/* athlete cutout — black backdrop dissolves into carbon via blend */}
+      {/* athlete cutout — black backdrop dissolves into carbon via blend + edge mask */}
       <motion.div
         className="pointer-events-none absolute right-[-6%] top-[6%] h-[92%] sm:right-[2%] lg:right-[6%]"
         style={reduce ? undefined : { y: yAthlete }}
@@ -54,12 +54,16 @@ function Hero() {
           height={IMG.heroCutout.h}
           alt={IMG.heroCutout.alt}
           className="h-full w-auto object-contain mix-blend-screen"
+          style={{
+            WebkitMaskImage:
+              "radial-gradient(ellipse 74% 76% at 50% 50%, black 66%, rgba(0,0,0,0.85) 80%, transparent 99%)",
+            maskImage:
+              "radial-gradient(ellipse 74% 76% at 50% 50%, black 66%, rgba(0,0,0,0.85) 80%, transparent 99%)",
+          }}
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.3, delay: 0.35, ease: EASE }}
         />
-        {/* feather the image edges into the carbon field */}
-        <div className="absolute inset-0 mix-blend-screen" style={{ boxShadow: "inset 0 0 120px 60px #1c1c1c" }} />
       </motion.div>
 
       {/* movement annotation: trajectory + takeoff marker */}
