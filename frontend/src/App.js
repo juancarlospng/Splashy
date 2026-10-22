@@ -1,7 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
-import Lenis from "lenis";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
@@ -44,31 +43,12 @@ class ErrorBoundary extends ReactComponent {
   }
 }
 
-// Lenis momentum scrolling + scroll reset on route change (inside Router).
+// Scroll reset on route change. Native scrolling — no smoothing wrapper.
 function ScrollManager() {
   const { pathname } = useLocation();
-  const lenisRef = useRef(null);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const lenis = new Lenis({ duration: 1.05, smoothWheel: true });
-    lenisRef.current = lenis;
-    let raf;
-    const loop = (time) => {
-      lenis.raf(time);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => {
-      cancelAnimationFrame(raf);
-      lenis.destroy();
-      lenisRef.current = null;
-    };
-  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    lenisRef.current?.scrollTo(0, { immediate: true });
   }, [pathname]);
 
   return null;
