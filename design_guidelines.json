@@ -1,0 +1,192 @@
+{
+  "project_name": "FLIGHT by Marquie 'Splashy' Smith",
+  "archetype": "THE PERFORMANCE PRO (Editorial Sports Architecture)",
+  "design_context": "EDITORIAL_SPORTS_BRAND",
+  "theme": "DARK_LIGHT_HYBRID",
+  "colors": {
+    "carbon_black": "#1C1C1C",
+    "bone": "#EFE9DB",
+    "forest_green": "#4C5C52",
+    "rust_orange": "#C6561A",
+    "medium_gray": "#606060",
+    "border_light": "rgba(239, 233, 219, 0.15)",
+    "border_dark": "rgba(28, 28, 28, 0.2)",
+    "usage": {
+      "dominant_dark_sections": "Background #1C1C1C, Text #EFE9DB, Rules #C6561A, Accent #4C5C52",
+      "dominant_bone_sections": "Background #EFE9DB, Text #1C1C1C, Rules #C6561A, Accent #606060",
+      "rust_orange_rules": "Use #C6561A strictly for highlights, badges, active states, key CTAs, and thin structural dividing lines",
+      "forest_green_sparing": "Use #4C5C52 sparingly for specialized metrics, verified indicators, and subtle tag fills",
+      "forbidden": "NO neon colors, NO gradients, NO glassmorphism, NO heavy shadows, NO 3D styling"
+    }
+  },
+  "typography": {
+    "headline_font": "Cormorant Garamond, serif",
+    "headline_font_fallback": "Playfair Display, Georgia, serif",
+    "body_font": "Inter, sans-serif",
+    "body_font_fallback": "system-ui, -apple-system, sans-serif",
+    "mono_font": "JetBrains Mono, monospace",
+    "hierarchy": {
+      "hero_title": "text-4xl sm:text-6xl lg:text-7xl font-serif font-light tracking-tight leading-[1.05]",
+      "section_title": "text-3xl sm:text-4xl lg:text-5xl font-serif font-normal tracking-tight leading-tight",
+      "subsection_title": "text-xl sm:text-2xl font-serif font-medium leading-snug",
+      "eyebrow_label": "text-xs uppercase font-mono tracking-[0.2em] text-[#C6561A]",
+      "body_text": "text-base sm:text-lg font-sans font-normal leading-relaxed text-[#606060]",
+      "nav_links": "text-xs sm:text-sm uppercase font-mono tracking-[0.15em] font-medium"
+    }
+  },
+  "layout_and_spacing": {
+    "container_padding": "px-4 sm:px-8 lg:px-16",
+    "section_vertical_spacing": "py-20 sm:py-32 lg:py-40",
+    "grid_system": "Bento Tetris & Editorial Split Grids",
+    "dividing_lines": "Restrained 1px solid thin rules (border-[#C6561A]/30 or border-current/20)",
+    "header_strategy": "Sticky opaque/semi-solid header with backdrop blur bg-[#1C1C1C]/95 text-[#EFE9DB] z-50 border-b border-[#EFE9DB]/10",
+    "hero_overlay": "Max overlay opacity bg-[#1C1C1C]/40 to let cinematic high-contrast photograph pop while maintaining high readability"
+  },
+  "motion_and_interactions": {
+    "smooth_scroll": "Lenis smooth momentum scrolling enabled globally",
+    "entrance_animations": "Framer Motion line-by-line text reveals and clip-path slide reveals",
+    "marquee": "Slow editorial drift marquee using react-fast-marquee with low-contrast editorial serif typography",
+    "hover_states": "Crisp text-color shifts to #C6561A, subtle 1px border highlights, 0.2s duration. NO scale scaling chaos.",
+    "accessibility": "Respect prefers-reduced-motion; high-contrast focus rings ring-2 ring-[#C6561A] ring-offset-2 ring-offset-[#1C1C1C]"
+  },
+  "bilingual_support": {
+    "enabled": true,
+    "languages": ["EN", "ES"],
+    "switcher_location": "Navigation bar & Footer",
+    "rule": "State stored in React context or URL query parameter; preserves current route and active view"
+  },
+  "flight_levels_nomenclature": {
+    "rule": "DO NOT use cartoon animal names (Grasshopper/Frog/Hare/Kangaroo/Spaceman). Use technical, disciplined athletic tiers:",
+    "tiers": [
+      { "code": "LVL-01", "title_en": "Groundwork & Kinetic Base", "title_es": "Fundamento Kinetic y Base", "target": "0 - 24 inch vertical" },
+      { "code": "LVL-02", "title_en": "Elastic Power & Impulse", "title_es": "Potencia Elástica e Impulso", "target": "24 - 30 inch vertical" },
+      { "code": "LVL-03", "title_en": "Apex Acceleration & Dunk Mechanics", "title_es": "Aceleración Ápex y Mecánica de Mate", "target": "30 - 36 inch vertical" },
+      { "code": "LVL-04", "title_en": "Stratosphere & Rim Command", "title_es": "Estratósfera y Control de Aro", "target": "36 - 42 inch vertical" },
+      { "code": "LVL-05", "title_en": "Orbital Flight & High-Yield Athletics", "title_es": "Vuelo Orbital y Alto Rendimiento", "target": "42+ inch vertical" }
+    ]
+  },
+  "pages_blueprint": {
+    "home": {
+      "path": "/",
+      "sections": [
+        "Hero: Action basketball dunk photograph, oversized FLIGHT ACADEMY wordmark, headline 'Elevate Your Game. Elevate Your Life.', CTAs 'Explore the Academy' / 'Discover Flight School'",
+        "Dual Ecosystem Split: FLIGHT SCHOOL (Free Media & Education) vs FLIGHT ACADEMY (Structured Coaching & Assessment)",
+        "Marquee: Slow editorial ticker ('PRECISION PLYOMETRICS · DUNK MECHANICS · INTENTIONAL ATHLETICISM · ASSESSMENTS')",
+        "Featured Programs Grid (Carbon Black section)",
+        "Flight Test Assessment Spotlight (Bone section)",
+        "Founders Note / Marquie 'Splashy' Smith Bio with cinematic portrait",
+        "Testimonial / Community Wall",
+        "CTA Section: 'Find Your Starting Point'"
+      ]
+    },
+    "flight_school": {
+      "path": "/school",
+      "description": "Free education & entertainment media property focused on jumping, dunk mechanics, and athletic development",
+      "features": [
+        "Interactive topic library with category filters (Dunk Mechanics, Vertical Jump, Recovery & Injury Prep, Plyometrics, Mindset)",
+        "Featured video/article breakdowns",
+        "Topic detail drawer/modal views",
+        "Newsletter signup for weekly breakdown drops"
+      ]
+    },
+    "programs": {
+      "path": "/programs",
+      "description": "Structured athletic development programs with detailed views and development-status labels",
+      "features": [
+        "Program cards with Development-Status Labels (e.g. 'ENROLLING NOW', 'IN-SEASON PROTOCOL', 'SELF-PACED')",
+        "Filterable by Level, Goal, and Duration",
+        "Program Detail View modal or dedicated state with syllabus, weekly schedule, required gear, and outcome metrics"
+      ]
+    },
+    "flight_test": {
+      "path": "/flight-test",
+      "description": "Athletic Assessment & Diagnostics Engine",
+      "features": [
+        "Interactive Assessment Request Form with step-by-step questionnaire",
+        "Metric Calculator Demo (Vertical jump potential estimate based on force/velocity input)",
+        "Demo status badge ('DEMO MODE - SUBMISSION SIMULATED')",
+        "Assessment methodology showcase"
+      ]
+    },
+    "coaching": {
+      "path": "/coaching",
+      "description": "Personalized Coaching & 1-on-1 Consultations",
+      "features": [
+        "Coaching Tiers & Consultations comparison",
+        "Bio breakdown of Marquie 'Splashy' Smith and specialized biomechanics staff",
+        "Interactive Consultation Booking Form with date/time picker (Shadcn Calendar)",
+        "Client Success Stories with metric growth indicators"
+      ]
+    },
+    "camps": {
+      "path": "/camps",
+      "description": "In-Person Athletic Camps & Intensive Workshops",
+      "features": [
+        "Upcoming Camp Tour Schedule (Location, Dates, Coach Staff, Capacity)",
+        "Camp Interest & Registration Form",
+        "Camp Daily Breakdown (Drills, Dunk Lab, Video Breakdown, Recovery)"
+      ]
+    },
+    "about": {
+      "path": "/about",
+      "description": "The Story of Marquie 'Splashy' Smith and the FLIGHT Philosophy",
+      "features": [
+        "Editorial longform layout with high-contrast imagery",
+        "The FLIGHT Manifesto: Discipline over hype",
+        "Biomechanics & Athletic Principles breakdown",
+        "Press & Media mentions"
+      ]
+    },
+    "contact": {
+      "path": "/contact",
+      "description": "Inquiries, Media, Partnership & Support",
+      "features": [
+        "Multi-purpose Contact Form (General, Media, Camp Host Inquiries)",
+        "FAQ Accordion (Shadcn Accordion customized for editorial dark mode)",
+        "Direct Contact Details & Location index"
+      ]
+    }
+  },
+  "image_urls": {
+    "hero_dunk_action": "https://images.unsplash.com/photo-1569731683228-5e7850ae0034?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHw0fHxiYXNrZXRiYWxsJTIwZHVuayUyMGFjdGlvbiUyMGF0aGxldGUlMjB2ZXJ0aWNhbCUyMGp1bXB8ZW58MHx8fGJsYWNrfDE3OTI2MjcxNzd8MA&ixlib=rb-4.1.0&q=85",
+    "outdoor_dunk": "https://images.pexels.com/photos/10415498/pexels-photo-10415498.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "street_court_bw": "https://images.pexels.com/photos/32600323/pexels-photo-32600323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "game_action": "https://images.unsplash.com/photo-1581390561595-2544b8d26538?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwyfHxiYXNrZXRiYWxsJTIwZHVuayUyMGFjdGlvbiUyMGF0aGxldGUlMjB2ZXJ0aWNhbCUyMGp1bXB8ZW58MHx8fGJsYWNrfDE3OTI2MjcxNzd8MA&ixlib=rb-4.1.0&q=85",
+    "hurdle_plyometrics": "https://images.pexels.com/photos/3764163/pexels-photo-3764163.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "jump_rope_conditioning": "https://images.pexels.com/photos/33892213/pexels-photo-33892213.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "marquie_splashy_portrait": "https://images.pexels.com/photos/38516877/pexels-photo-38516877.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "athlete_ball_portrait": "https://images.unsplash.com/photo-1660809360520-a986b87e6f08?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHw0fHxhdGhsZXRpYyUyMHRyYWluZXIlMjBwb3J0cmFpdCUyMGRhcmslMjBneW0lMjBibGFjayUyMGFuZCUyMHdoaXRlJTIwYmFza2V0YmFsbHxlbnwwfHx8YmxhY2t8MTc5MjYyNzE4NHww&ixlib=rb-4.1.0&q=85",
+    "gym_workout_focus": "https://images.pexels.com/photos/16149621/pexels-photo-16149621.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+  },
+  "testing_and_data_attributes": {
+    "rule": "Every interactive and key informational element MUST have a clear data-testid attribute in kebab-case.",
+    "examples": [
+      "data-testid=\"nav-link-school\"",
+      "data-testid=\"nav-link-programs\"",
+      "data-testid=\"nav-cta-find-starting-point\"",
+      "data-testid=\"language-switcher-button\"",
+      "data-testid=\"hero-cta-explore-academy\"",
+      "data-testid=\"hero-cta-discover-school\"",
+      "data-testid=\"flight-test-submit-button\"",
+      "data-testid=\"program-card-enrolling-badge\"",
+      "data-testid=\"school-category-filter-dunk-mechanics\""
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Load Google Fonts Cormorant Garamond and Inter in public/index.html or index.css.",
+    "Implement Lenis smooth momentum scrolling in App.js or main entry file.",
+    "Build a robust LanguageContext supporting EN/ES translations across all 8 views.",
+    "Ensure header nav has opaque/backdrop-blur styling with high-contrast text and language switcher.",
+    "Maintain high contrast editorial aesthetics with alternating Carbon Black (#1C1C1C) and Bone (#EFE9DB) sections.",
+    "Use thin border rules in Rust Orange (#C6561A) or subdued current color to separate content.",
+    "Ensure demo forms display a clear 'Demo Submission Simulated' notification using Sonner toasts.",
+    "Ensure all buttons, inputs, links, and cards carry kebab-case data-testid attributes."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Avoid generic AI slop: no center-everything, no heavy blue gradients, no glass card overload.",
+    "Dark colors look good when used solid with high-contrast serif headlines.",
+    "Do NOT use cartoon animals for Flight Levels. Use Tier codes LVL-01 to LVL-05.",
+    "Always specify explicit hover text colors (e.g. hover:text-[#C6561A]).",
+    "Use generous padding (py-24 to py-36 for major sections) to create an editorial magazine feel."
+  ]
+}
