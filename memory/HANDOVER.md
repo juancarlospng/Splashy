@@ -20,3 +20,11 @@
 - Contact details + live social links (Instagram handle @FLIGHTXACADEMY shown as text, no link yet).
 - Flight Test request handling (email/CRM destination) and camp scheduling before enabling real submissions.
 - Recovery / LeanCutX product decisions remain open per the master plan.
+
+## Deploying to Vercel (ready)
+- The frontend at `/app/frontend` is a fully static Create React App build — no backend, no database, no env vars at build or runtime (all forms are client-side demonstrations).
+- `vercel.json` is committed with: `CI=false yarn build`, output `build/`, and an SPA rewrite (`/(.*) → /index.html`) so routes like /programs/flight-levels resolve on refresh.
+- Deploy steps: import the repo in Vercel → set **Root Directory = `frontend`** → framework preset "Create React App" is auto-detected → Deploy. No environment variables needed.
+- Production build verified locally (`yarn build` passes, ~30s).
+- `.env` files are intentionally NOT committed (nothing needs them for this static site; the backend/.env holds a Mongo URL that must not ship to a public repo).
+- When real integrations are added later (contact form delivery, assessment requests), set their keys in Vercel's Project → Settings → Environment Variables, never in committed files.

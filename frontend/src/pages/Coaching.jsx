@@ -3,7 +3,7 @@ import { getProgram } from "@/data/programs";
 import { IMG } from "@/data/images";
 import PageHeader from "@/components/PageHeader";
 import { Reveal } from "@/components/motion";
-import { Eyebrow, Btn, StatusTag } from "@/components/ui-bits";
+import { Btn, StatusTag } from "@/components/ui-bits";
 import { statusLabel } from "./Programs";
 
 const SHELL = "mx-auto max-w-shell px-5 sm:px-8 lg:px-12";
