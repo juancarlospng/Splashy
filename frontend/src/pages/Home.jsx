@@ -18,7 +18,6 @@ function Hero() {
   const { t } = useLang();
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
-  const yAthlete = useTransform(scrollY, [0, 900], [0, 90]);
   const yType = useTransform(scrollY, [0, 900], [0, -30]);
   const quick = [
     { to: "/school", label: t.home.quick.items[0] },
@@ -43,10 +42,11 @@ function Hero() {
         </span>
       </motion.div>
 
-      {/* athlete cutout — black backdrop dissolves into carbon via blend + edge mask */}
+      {/* athlete cutout — black backdrop dissolves into carbon via blend + edge mask.
+          NOTE: no parallax transform on this container — a transform would isolate
+          the blend context and reveal the image's black backdrop while scrolling. */}
       <motion.div
         className="pointer-events-none absolute right-[-6%] top-[6%] h-[92%] sm:right-[2%] lg:right-[6%]"
-        style={reduce ? undefined : { y: yAthlete }}
       >
         <motion.img
           src={IMG.heroCutout.src}
